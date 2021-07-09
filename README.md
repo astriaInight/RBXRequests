@@ -14,6 +14,5 @@ Though, the built-in HTTPService already supports setting headers, this module i
 ### 3. Ease of use
 Most functions in this module include a single, simple dictionary as a parameter for requests. This dictionary should include a URL, headers (optional), and cookies, (optional).
 
-<style>img {border-radius: 8px;}</style>
-<img src="https://raw.githubusercontent.com/astriaInight/RBXRequests/main/documentation/assets/rbxrequests_data.png" alt="data dictionary example" width=710/>
+<img src="https://raw.githubusercontent.com/astriaInight/RBXRequests/main/documentation/assets/rbxrequests_data.png" alt="data dictionary example" width=710 style="border-radius: 5px"/>
 
