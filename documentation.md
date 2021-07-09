@@ -1,6 +1,6 @@
 # Documentation
 
 
-## Table of Contents
-- yes
-- yes
+## Functions
+- [Requests:Get()](/documentation/functions/get)
+- [/documentation/functions/post]
