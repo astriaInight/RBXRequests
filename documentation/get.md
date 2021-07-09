@@ -18,7 +18,7 @@
 | **Default** |  |
 | **Optional** | false |
 | **Summary** | The URL/link the request is sent to. |
-| **Example** | ```lua "https://google.com"``` |
+| **Example** | ```"https://google.com"``` |
 
 |   |   |
 --- | ---
