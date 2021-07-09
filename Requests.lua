@@ -53,6 +53,39 @@ local function isJSON(str)
 end
 
 -- Module functions
+function requests:SendRequest(data)
+	-- data: url, method, cookies, headers
+	-- Errors
+	if not data then
+		error("No data provided")
+	end
+	if not data.url then
+		error("No URL provided")
+	end
+	if not data.method then
+		error("No method provided")
+	end
+
+	-- Defaults
+	if not data.cookies then
+		data.cookies = {}
+	end
+	if not data.headers then
+		data.headers = {}
+	end
+	data.method = string.upper(data.method) -- Make method uppercase
+
+	-- Setup cookies
+	data.headers['Cookie'] = cookiesToHeader(data.cookies)
+	print("Final headers: ")
+	print(data.headers)
+
+	-- Send request
+	local response = httpService:GetAsync(data.url, false, data.headers)
+
+	return response
+end
+
 function requests:Get(data)
 	-- Errors
 	if not data then
