@@ -3,3 +3,13 @@ An HTTP requests module for Roblox designed with control and flexibility in mind
 
 ## Documentation
 Module documentation [here](https://github.com/astriaInight/RBXRequests/blob/main/documentation.md)
+
+## Features
+### 1. Cookies
+RBXRequests supports setting cookies for each request, opening up many possibilities, such as ranking Roblox users in a group, interacting with a Roblox account, or signing into many other services.
+
+### 2. Headers
+Though, the built-in HTTPService already supports setting headers, this module is designed to make the experience even more intuitive.
+
+### 3. Ease of use
+This module includes
