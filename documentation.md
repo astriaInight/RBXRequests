@@ -2,5 +2,5 @@
 
 
 ## Functions
-- [Requests:Get()](/documentation/functions/get.md)
+- [Requests:Get()](./documentation/functions/get.md)
 - [/documentation/functions/post]
