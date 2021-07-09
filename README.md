@@ -14,6 +14,6 @@ Though, the built-in HTTPService already supports setting headers, this module i
 ### 3. Ease of use
 Most functions in this module include a single, simple dictionary as a parameter for requests. This dictionary should include a URL, headers (optional), and cookies, (optional).
 
-<img src="https://raw.githubusercontent.com/astriaInight/RBXRequests/main/documentation/assets/rbxrequests_data.png">
+<img src="https://raw.githubusercontent.com/astriaInight/RBXRequests/main/documentation/assets/rbxrequests_data.png"/>
 ![data dictionary example](https://raw.githubusercontent.com/astriaInight/RBXRequests/main/documentation/assets/rbxrequests_data.png)
 
