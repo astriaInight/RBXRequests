@@ -1,5 +1,6 @@
 # Requests:Get()
 ## Parameters
+|   |   | 
 --- | ---
 | Name | data |
 | Type | variant |
