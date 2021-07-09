@@ -12,7 +12,7 @@ local function removeLastChar(str)
 end
 
 local function cookiesToHeader(cookies)
-	local headersStr = "Cookie="
+	local headersStr = ""
 	
 	for key, value in pairs(cookies) do
 		local template = "%s=%s&"
@@ -21,12 +21,13 @@ local function cookiesToHeader(cookies)
 	end
 	
 	headersStr = removeLastChar(headersStr)
+	
 	return headersStr
 end
 
 local function mergeTables(...)
 	local newTbl = {}
-	for _, t in (...) do
+	for _, t in pairs(table.pack(...)) do
 		for _, v in pairs(t) do
 			table.insert(newTbl, v)
 		end
@@ -76,7 +77,9 @@ function requests:Get(data)
 	end
 	
 	-- Setup cookies
-	data.headers = mergeTables(data.headers, cookiesToHeader(data.cookies))
+	data.headers['Cookie'] = cookiesToHeader(data.cookies)
+	print("Final headers: ")
+	print(data.headers)
 	
 	-- Send request
 	local response = httpService:GetAsync(data.url, false, data.headers)
