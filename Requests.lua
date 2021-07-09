@@ -4,7 +4,12 @@ local requests = {}
 
 -- Functions
 local function getRawCookie(cookie)
-	return string.gsub(cookie, "_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-this-will-allow-someone-to-log-in-as-you-and-to-steal-your-ROBUX-and-items.|_", "")
+	local modifiedCookie = string.gsub(cookie, "-", " ")
+	if string.find(modifiedCookie, "DO NOT SHARE THIS") then
+		return string.sub(cookie, 117, #cookie)
+	else
+		return cookie
+	end
 end
 
 local function removeLastChar(str)
@@ -13,15 +18,15 @@ end
 
 local function cookiesToHeader(cookies)
 	local headersStr = ""
-	
+
 	for key, value in pairs(cookies) do
 		local template = "%s=%s&"
 		local cookieStr = string.format(template, key, getRawCookie(value))
 		headersStr = headersStr .. cookieStr
 	end
-	
+
 	headersStr = removeLastChar(headersStr)
-	
+
 	return headersStr
 end
 
@@ -39,7 +44,7 @@ local function isJSON(str)
 	local _, err = pcall(function()
 		httpService:JSONDecode(str)
 	end)
-	
+
 	if err then
 		return false
 	else
@@ -49,17 +54,6 @@ end
 
 -- Module functions
 function requests:Get(data)
-	--[[ #Sample data
-	{
-		url = "https://roblox.com",
-		cookies = {
-			['.ROBLOSECURITY'] = "cookie goes here",
-		}
-		headers = {
-			['x-csrf-token'] = "token goes here"
-		}
-	}
-	]]
 	-- Errors
 	if not data then
 		error("No data provided")
@@ -67,7 +61,7 @@ function requests:Get(data)
 	if not data.url then
 		error("No URL provided")
 	end
-	
+
 	-- Defaults
 	if not data.cookies then
 		data.cookies = {}
@@ -75,15 +69,15 @@ function requests:Get(data)
 	if not data.headers then
 		data.headers = {}
 	end
-	
+
 	-- Setup cookies
 	data.headers['Cookie'] = cookiesToHeader(data.cookies)
 	print("Final headers: ")
 	print(data.headers)
-	
+
 	-- Send request
 	local response = httpService:GetAsync(data.url, false, data.headers)
-	
+
 	return response
 end
 
