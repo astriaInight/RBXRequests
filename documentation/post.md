@@ -5,5 +5,5 @@
 | Name | data |
 | Type | variant |
 | Default |  |
-| Summary | e |
+| Summary | Determines how the request is sent and what data is included. |
 
