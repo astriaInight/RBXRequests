@@ -2,7 +2,7 @@
 An HTTP requests module for Roblox designed with control and flexibility in mind. 
 
 ## Documentation
-Module documentation [here](https://github.com/astriaInight/RBXRequests/blob/main/documentation.md)
+Module documentation [**here**](https://github.com/astriaInight/RBXRequests/blob/main/documentation.md)
 
 ## Features
 ### 1. Cookies
