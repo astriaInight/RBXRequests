@@ -81,7 +81,24 @@ function requests:SendRequest(data)
 	print(data.headers)
 
 	-- Send request
-	local response = httpService:GetAsync(data.url, false, data.headers)
+	local response
+	
+	if data.method == "GET" then
+		response = httpService:GetAsync(data.url, false, data.headers)
+	elseif data.method == "POST" then
+		-- Errors
+		if not data.data then
+			error("No POST data provided")
+		end
+		
+		-- Defaults
+		if data.contentType == nil then
+			data.contentType = Enum.HttpContentType.ApplicationJson -- Default
+		end
+		
+		
+		response = httpService:PostAsync(data.url, data.data, data.contentType, false, data.headers)
+	end
 
 	return response
 end
@@ -105,8 +122,6 @@ function requests:Get(data)
 
 	-- Setup cookies
 	data.headers['Cookie'] = cookiesToHeader(data.cookies)
-	print("Final headers: ")
-	print(data.headers)
 
 	-- Send request
 	local response = httpService:GetAsync(data.url, false, data.headers)
