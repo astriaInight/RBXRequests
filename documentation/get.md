@@ -20,6 +20,8 @@
 | **Summary** | The URL/link the request is sent to. |
 | **Example** | ```"https://google.com"``` |
 
+# 
+
 |   |   |
 --- | ---
 | **Name** | cookies |
