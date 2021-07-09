@@ -12,4 +12,5 @@ RBXRequests supports setting cookies for each request, opening up many possibili
 Though, the built-in HTTPService already supports setting headers, this module is designed to make the experience even more intuitive.
 
 ### 3. Ease of use
-This module includes a single, simple dictionary as a parameter for requests. This dictionary should include 
+Most functions in this module include a single, simple dictionary as a parameter for requests. This dictionary should include a URL, headers (optional), and cookies, (optional).
+
