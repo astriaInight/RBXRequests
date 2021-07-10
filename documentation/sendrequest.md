@@ -4,7 +4,7 @@
 
 |   |   |
 --- | ---
-| **Name** | data |
+|**Name** | data |
 | **Type** | dictionary |
 | **Default** |   |
 | **Summary** | Determines how the request is sent and what data is included. |
@@ -42,5 +42,21 @@
 | **Optional** | false |
 | **Summary** | Determines the type of request. |
 | **Example** | `"GET"` or `"POST"` |
+
+# data Example
+```lua
+{
+    url = "https://google.com",
+    method = "GET",
+    cookies = {
+        ["Cookie name"] = "Cookie value",
+        ["Cookie2"] = "Test"
+    },
+    headers = {
+        ["Header1"] = "Test",
+        ["Header2"] = "Test2"
+    }
+}
+```
 
 
