@@ -30,3 +30,15 @@
 | **Optional** | true |
 | **Summary** | Sets the cookies of the request. |
 | **Example** | ```{['Cookie Name'] = "Cookie Value"}``` |
+
+# 
+
+|   |   |
+--- | ---
+| **Name** | headers |
+| **Type** | dictionary |
+| **Default** |  |
+| **Optional** | true |
+| **Summary** | Sets the headers of the request. |
+| **Example** | ```{['Header Name'] = "Header Value"}``` |
+
