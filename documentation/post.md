@@ -2,7 +2,7 @@
 ## Parameters
 |   |   |
 --- | ---
-| **Name** | data |
+| **Name** | [data](https://github.com/astriaInight/RBXRequests/blob/main/documentation/dataparam.md) |
 | **Type** | variant |
 | **Default** |  |
 | **Summary** | Determines how the request is sent and what data is included. |
