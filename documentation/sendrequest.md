@@ -3,6 +3,9 @@
 ## About
 A function that can send both get or post requests.
 
+## Returns
+Returns either the response body (string) or decoded json (array/dictionary), depending on the HTTP content type 
+
 ## Parameters
 
 |   |   |
