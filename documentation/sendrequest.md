@@ -4,7 +4,7 @@
 A function that can send both get or post requests.
 
 ## Returns
-Returns either the response body (string) or decoded json (array/dictionary), depending on the HTTP content type. 
+Returns either the [response body](https://github.com/astriaInight/RBXRequests/blob/main/documentation/responsebody.md) (string) or decoded json (array/dictionary), depending on the HTTP content type. 
 
 ## Parameters
 
