@@ -21,5 +21,5 @@ Thanks to the help of [rprxy](https://github.com/sentanos/rprxy) by [sentanos](h
 
 <img src="https://raw.githubusercontent.com/astriaInight/RBXRequests/main/documentation/assets/rprxy_url.png" alt="rprxy url" width=200/>
 
-<img src="https://raw.githubusercontent.com/astriaInight/RBXRequests/main/documentation/assets/rprxy_about.png" alt="rprxy about" width=410/>
+<img src="https://raw.githubusercontent.com/astriaInight/RBXRequests/main/documentation/assets/rprxy_about.png" alt="rprxy about" width=610/>
 
