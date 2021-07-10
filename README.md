@@ -16,3 +16,9 @@ Most functions in this module include a single, simple dictionary as a parameter
 
 <img src="https://raw.githubusercontent.com/astriaInight/RBXRequests/main/documentation/assets/rbxrequests_data.png" alt="data dictionary example" width=710/>
 
+### 4. Access roblox.com links
+Thanks to the help of [rprxy](https://github.com/sentanos/rprxy) by [sentanos](https://github.com/sentanos), we have been able to easily bypass some of the restrictions of [HttpService](https://developer.roblox.com/en-us/api-reference/class/HttpService)
+
+<img src="" alt="rprxy url" width=710/>
+
+
