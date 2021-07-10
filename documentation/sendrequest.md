@@ -10,7 +10,7 @@ A function that can send both get or post requests.
 |**Name** | data |
 | **Type** | dictionary |
 | **Default** |   |
-| **Summary** | Determines how the request is sent and what data is included. |
+| **Summary** | A single dictionary, determines how the request is sent and what data is included. |
 
 # data
 ## Parameters
