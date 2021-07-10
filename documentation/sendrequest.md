@@ -1,5 +1,8 @@
 # Requests:SendRequest()
 
+## About
+A function that can send both get or post requests.
+
 ## Parameters
 
 |   |   |
