@@ -49,6 +49,16 @@ Returns either the [response body](https://github.com/astriaInight/RBXRequests/b
 | **Summary** | Determines the type of request. |
 | **Example** | `"GET"` or `"POST"` |
 
+# 
+
+|   |   |
+--- | ---
+| **Name** | data |
+| **Type** | any |
+| **Default** |  |
+| **Optional** | false |
+| **Summary** | The data sent in a POST request. |
+
 # data Example
 ```lua
 {
