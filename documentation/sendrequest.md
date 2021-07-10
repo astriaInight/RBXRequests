@@ -4,10 +4,10 @@
 
 |   |   |
 --- | ---
-| Name | data |
-| Type | dictionary |
-| Default |   |
-| Summary | Determines how the request is sent and what data is included. |
+| **Name** | data |
+| **Type** | dictionary |
+| **Default** |   |
+| **Summary** | Determines how the request is sent and what data is included. |
 
 # data
 ## Parameters
@@ -41,6 +41,6 @@
 | **Default** |  |
 | **Optional** | false |
 | **Summary** | Determines the type of request. |
-| **Example** | `"GET"` or `POST` |
+| **Example** | `"GET"` or `"POST"` |
 
 
