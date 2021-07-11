@@ -52,6 +52,8 @@ local function isJSON(str)
 	end
 end
 
+
+
 -- Module functions
 function requests:SendRequest(data)
 	-- data: url, method, cookies, headers
@@ -84,7 +86,22 @@ function requests:SendRequest(data)
 	local response
 	
 	if data.method == "GET" then
-		response = httpService:GetAsync(data.url, false, data.headers)
+		response = {}
+		local res
+		
+		local _, err = pcall(function()
+			res = httpService:GetAsync(data.url, false, data.headers)
+		end)
+		
+		-- Auto convert json
+		if isJSON(res) then
+			response.data = httpService:JSONDecode(res)
+		else
+			response.data = res
+		end
+		
+		-- Set statusCode
+		
 	elseif data.method == "POST" then
 		-- Errors
 		if not data.data then
