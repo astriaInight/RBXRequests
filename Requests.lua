@@ -52,6 +52,10 @@ local function isJSON(str)
 	end
 end
 
+local function trustBypass(url)
+	return string.gsub(url, "roblox.com", "rprxy.xyz")
+end
+
 
 
 -- Module functions
@@ -76,45 +80,56 @@ function requests:SendRequest(data)
 		data.headers = {}
 	end
 	data.method = string.upper(data.method) -- Make method uppercase
+	data.url = trustBypass(data.url) -- Allow access to roblox sites
 
 	-- Setup cookies
 	data.headers['Cookie'] = cookiesToHeader(data.cookies)
-	print("Final headers: ")
-	print(data.headers)
 
 	-- Send request
 	local response
-	
+	response.statusCode = 200 -- Default status code
+
 	if data.method == "GET" then
 		response = {}
 		local res
-		
-		local _, err = pcall(function()
+
+		local _, httpErr = pcall(function()
 			res = httpService:GetAsync(data.url, false, data.headers)
 		end)
-		
+
 		-- Auto convert json
 		if isJSON(res) then
 			response.data = httpService:JSONDecode(res)
 		else
 			response.data = res
 		end
-		
+
 		-- Set statusCode
-		
+		if httpErr then
+			response.statusCode = string.match(httpErr, "%d+") -- Get just the status code number
+			error(httpErr)
+		end
+
 	elseif data.method == "POST" then
 		-- Errors
 		if not data.data then
 			error("No POST data provided")
 		end
-		
+
 		-- Defaults
 		if data.contentType == nil then
 			data.contentType = Enum.HttpContentType.ApplicationJson -- Default
 		end
 		
+		local _, httpErr = pcall(function()
+			response = httpService:PostAsync(data.url, data.data, data.contentType, false, data.headers)
+		end)
 		
-		response = httpService:PostAsync(data.url, data.data, data.contentType, false, data.headers)
+		-- Set statusCode
+		if httpErr then
+			response.statusCode = string.match(httpErr, "%d+") -- Get just the status code number
+			error(httpErr)
+		end
 	end
 
 	return response
