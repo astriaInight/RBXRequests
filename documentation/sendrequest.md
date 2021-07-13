@@ -15,7 +15,7 @@ Returns either the [response body](https://github.com/astriaInight/RBXRequests/b
 | **Default** |   |
 | **Summary** | A single dictionary, determines how the request is sent and what data is included. |
 
-# data
+# requestOptions
 ## Parameters
 
 |   |   |
