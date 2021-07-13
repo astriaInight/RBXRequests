@@ -59,42 +59,43 @@ end
 
 
 -- Module functions
-function requests:SendRequest(data)
-	-- data: url, method, cookies, headers
+function requests:SendRequest(requestOptions)
+	-- requestOptions: url, method, cookies, headers
 	-- Errors
-	if not data then
-		error("No data provided")
+	if not requestOptions then
+		error("No requestOptions provided")
 	end
-	if not data.url then
+	if not requestOptions.url then
 		error("No URL provided")
 	end
-	if not data.method then
+	if not requestOptions.method then
 		error("No method provided")
 	end
 
 	-- Defaults
-	if not data.cookies then
-		data.cookies = {}
+	if not requestOptions.cookies then
+		requestOptions.cookies = {}
 	end
-	if not data.headers then
-		data.headers = {}
+	if not requestOptions.headers then
+		requestOptions.headers = {}
 	end
-	data.method = string.upper(data.method) -- Make method uppercase
-	data.url = trustBypass(data.url) -- Allow access to roblox sites
+	requestOptions.method = string.upper(requestOptions.method) -- Make method uppercase
+	requestOptions.url = trustBypass(requestOptions.url) -- Allow access to roblox sites
 
 	-- Setup cookies
-	data.headers['Cookie'] = cookiesToHeader(data.cookies)
+	requestOptions.headers['Cookie'] = cookiesToHeader(requestOptions.cookies)
 
 	-- Send request
-	local response
-	response.statusCode = 200 -- Default status code
+	local response = {
+		statusCode = 200 -- Default status code
+	}
 
-	if data.method == "GET" then
+	if requestOptions.method == "GET" then
 		response = {}
 		local res
 
 		local _, httpErr = pcall(function()
-			res = httpService:GetAsync(data.url, false, data.headers)
+			res = httpService:GetAsync(requestOptions.url, false, requestOptions.headers)
 		end)
 
 		-- Auto convert json
@@ -110,19 +111,27 @@ function requests:SendRequest(data)
 			error(httpErr)
 		end
 
-	elseif data.method == "POST" then
+	elseif requestOptions.method == "POST" then
 		-- Errors
-		if not data.data then
+		if not requestOptions.data then
 			error("No POST data provided")
 		end
 
 		-- Defaults
-		if data.contentType == nil then
-			data.contentType = Enum.HttpContentType.ApplicationJson -- Default
+		if requestOptions.contentType == nil then
+			requestOptions.contentType = Enum.HttpContentType.ApplicationJson -- Default
 		end
 		
+		-- Convert dictionary to json
+		if not isJSON(requestOptions.data) then
+			if type(requestOptions.data) == "table" then
+				requestOptions.data = httpService:JSONEncode(requestOptions.data)
+			end
+		end
+		
+		-- Send request
 		local _, httpErr = pcall(function()
-			response = httpService:PostAsync(data.url, data.data, data.contentType, false, data.headers)
+			response = httpService:PostAsync(requestOptions.url, requestOptions.data, requestOptions.contentType, false, requestOptions.headers)
 		end)
 		
 		-- Set statusCode
@@ -135,28 +144,59 @@ function requests:SendRequest(data)
 	return response
 end
 
-function requests:Get(data)
+function requests:Get(requestOptions)
 	-- Errors
-	if not data then
-		error("No data provided")
+	if not requestOptions then
+		error("No requestOptions provided")
 	end
-	if not data.url then
+	if not requestOptions.url then
 		error("No URL provided")
 	end
 
 	-- Defaults
-	if not data.cookies then
-		data.cookies = {}
+	if not requestOptions.cookies then
+		requestOptions.cookies = {}
 	end
-	if not data.headers then
-		data.headers = {}
+	if not requestOptions.headers then
+		requestOptions.headers = {}
 	end
-
-	-- Setup cookies
-	data.headers['Cookie'] = cookiesToHeader(data.cookies)
 
 	-- Send request
-	local response = httpService:GetAsync(data.url, false, data.headers)
+	local response = requests:SendRequest({
+		url = requestOptions.url,
+		cookies = requestOptions.cookies,
+		headers = requestOptions.headers,
+		method = "GET"
+	})
+
+	return response
+end
+
+function requests:Post(requestOptions)
+	-- Errors
+	if not requestOptions then
+		error("No requestOptions provided")
+	end
+	if not requestOptions.url then
+		error("No URL provided")
+	end
+
+	-- Defaults
+	if not requestOptions.cookies then
+		requestOptions.cookies = {}
+	end
+	if not requestOptions.headers then
+		requestOptions.headers = {}
+	end
+
+	-- Send request
+	local response = requests:SendRequest({
+		url = requestOptions.url,
+		cookies = requestOptions.cookies,
+		headers = requestOptions.headers,
+		data = requestOptions.data,
+		method = "POST"
+	})
 
 	return response
 end
