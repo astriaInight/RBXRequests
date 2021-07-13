@@ -10,7 +10,7 @@ Returns either the [response body](https://github.com/astriaInight/RBXRequests/b
 
 |   |   |
 --- | ---
-|**Name** | requestOptions |
+|**Name** | [requestOptions](https://github.com/astriaInight/RBXRequests/blob/main/documentation/optparam.md) |
 | **Type** | dictionary |
 | **Default** |   |
 | **Summary** | A single dictionary, determines how the request is sent and what data is included. |
