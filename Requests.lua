@@ -3,7 +3,7 @@ local httpService = game:GetService("HttpService")
 local requests = {}
 
 -- Functions
-local function getRawCookie(cookie)
+local function getRawCookie(cookie) -- Removes warning from cookie
 	local modifiedCookie = string.gsub(cookie, "-", " ")
 	if string.find(modifiedCookie, "DO NOT SHARE THIS") then
 		return string.sub(cookie, 117, #cookie)
