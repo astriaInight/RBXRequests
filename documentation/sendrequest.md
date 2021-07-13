@@ -57,7 +57,7 @@ Returns either the [response body](https://github.com/astriaInight/RBXRequests/b
 | **Type** | any |
 | **Default** |  |
 | **Optional** | false |
-| **Summary** | The data sent in a POST request. |
+| **Summary** | The data sent in a POST request. Not required for GET requests. |
 
 # data Example
 ```lua
