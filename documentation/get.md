@@ -2,7 +2,7 @@
 ## Parameters
 |   |   | 
 --- | ---
-| **Name** | [data](https://github.com/astriaInight/RBXRequests/blob/main/documentation/dataparam.md) |
+| **Name** | [requestOptions](https://github.com/astriaInight/RBXRequests/blob/main/documentation/optparam.md) |
 | **Type** | dictionary |
 | **Default** |  |
 | **Optional** | false |
