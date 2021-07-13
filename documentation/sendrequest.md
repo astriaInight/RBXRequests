@@ -59,7 +59,7 @@ Returns either the [response body](https://github.com/astriaInight/RBXRequests/b
 | **Optional** | false |
 | **Summary** | The data sent in a POST request. Not required for GET requests. |
 
-# data Example
+# requestOptions Example
 ```lua
 {
     url = "https://google.com",
